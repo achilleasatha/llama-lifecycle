@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: python:latest
+      image: alpine:latest
 
     steps:
       - name: Checkout Repository
@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m venv venv
-          . venv/bin/activate
+          source venv/bin/activate
           pip install awscli mkdocs mkdocs-material
 
       - name: Deploy Documentation to S3
