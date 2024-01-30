@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "llama-shepherd-lifecycle"
+name = "llama-lifecycle"
 version = "0.1.0"
 description = ""
 authors = ["Achilleas Athanasiou Fragkoulis achilleasatha@gmail.com"]
