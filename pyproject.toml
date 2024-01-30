@@ -2,7 +2,7 @@
 name = "llama-lifecycle"
 version = "0.1.0"
 description = ""
-authors = ["Achilleas Athanasiou Fragkoulis achilleasatha@gmail.com"]
+authors = ["Achilleas Athanasiou Fragkoulis <achilleasatha@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
