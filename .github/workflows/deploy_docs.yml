@@ -17,10 +17,15 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Python
-        run: apk add --no-cache python3 py3-pip
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
       - name: Install dependencies
-        run: pip3 install awscli mkdocs mkdocs-material
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install awscli mkdocs mkdocs-material
 
       - name: Deploy Documentation to S3
         run: |
@@ -28,4 +33,4 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: eu-west-2
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
