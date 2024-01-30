@@ -1,6 +1,6 @@
 # Llama Lifecycle
 
-An example toy project on how to manage an LLM deployment lifecycle for a real-world application. 
+An example toy project on how to manage an LLM deployment lifecycle for a real-world application.
 
 ## Project Setup
 
@@ -21,7 +21,7 @@ Make sure you have the following tools installed on your system:
    ```bash
    git clone https://github.com/your_username/your_project.git
     ```
-   
+
 2. **Navigate to the Project Directory:**
 
     ```bash
