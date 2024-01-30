@@ -1,6 +1,8 @@
 site_name: Llama Lifecycle
 site_url: https://example.com/
 nav:
-  - Home: index.md
-  - About: about.md
+  - Home: ./README.md
+#  - About: about.md
 theme: readthedocs
+
+docs_dir: ./docs
