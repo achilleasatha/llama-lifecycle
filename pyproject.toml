@@ -11,6 +11,9 @@ mkdocs = "^1.5.3"
 bumpver = "^2023.1129"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
