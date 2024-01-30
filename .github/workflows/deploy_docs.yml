@@ -9,9 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    container:
-      image: alpine:latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
