@@ -1,23 +1,23 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0  # Use the latest stable release of pre-commit-hooks
+    rev: v4.5.0  # Use the latest stable release of pre-commit-hooks
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
 
   - repo: https://github.com/pre-commit/mirrors-isort
-    rev: v5.9.3
+    rev: v5.10.1
     hooks:
       - id: isort
         args: [--profile, black]
 
   - repo: https://github.com/psf/black
-    rev: stable
+    rev: 24.1.1
     hooks:
       - id: black
 
   - repo: https://github.com/PyCQA/flake8
-    rev: 4.0.0
+    rev: 7.0.0
     hooks:
       - id: flake8
         name: Flake8
@@ -25,18 +25,18 @@ repos:
         language: system
 
   - repo: https://github.com/pre-commit/mirrors-pylint
-    rev: v2.9.6
+    rev: v3.0.0a5
     hooks:
       - id: pylint
         args: [--disable=all, --enable=W, --enable=C]
 
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.7.0
+    rev: 1.7.7
     hooks:
       - id: bandit
 
   - repo: https://github.com/myint/docformatter
-    rev: v1.4
+    rev: v1.7.5
     hooks:
       - id: docformatter
         language: python
