@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m venv venv
-          source venv/bin/activate
+          . venv/bin/activate
           pip install awscli mkdocs mkdocs-material
 
       - name: Deploy Documentation to S3
