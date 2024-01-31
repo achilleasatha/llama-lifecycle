@@ -21,7 +21,7 @@ build-backend = "poetry.core.masonry.api"
 
 [bumpver]
 current_version = "0.0.5"
-version_pattern = "MAJOR.MINOR.PATCH"
+version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 commit = true
 tag = true
 push = true
