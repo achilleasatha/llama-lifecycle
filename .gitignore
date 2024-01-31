@@ -1,3 +1,13 @@
+# Virtual environment
+/.venv/
+
+# Temporary Python files
+*.pyc
+__pycache__/
+
+# Static files
 site/
+
+# Coverage reports for tests
 .coverage
 coverage.xml
