@@ -20,7 +20,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [bumpver]
-current_version = "0.0.7a0"
+current_version = "0.0.8a0"
 version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 commit = true
 tag = true
