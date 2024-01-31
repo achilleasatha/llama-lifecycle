@@ -25,3 +25,4 @@ version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 commit = true
 tag = true
 push = true
+bump_files = ["pyproject.toml"]
