@@ -1,0 +1,35 @@
+name: Run pytest tests
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  pytest:
+    name: Run pytest
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install Poetry
+      run: |
+        curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+        export PATH="$HOME/.poetry/bin:$PATH"
+
+    - name: Install project dependencies
+      run: poetry install
+
+    - name: Run pytest tests
+      run: |
+        poetry run pytest
