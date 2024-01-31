@@ -37,7 +37,6 @@ jobs:
     - name: Run pytest tests with coverage
       run: |
         poetry run pytest --cov=.
-        codecov -t ${{ secrets.CODECOV_TOKEN }} # Assuming codecov is installed and configured
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
