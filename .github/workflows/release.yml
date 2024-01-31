@@ -21,13 +21,13 @@ jobs:
         id: check_tag
         run: |
           if [[ ${{ github.ref }} =~ ^refs/tags/([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
-            echo "::set-output name=valid_tag::true"
+            echo "VALID_TAG=true" >> $GITHUB_ENV
           else
-            echo "::set-output name=valid_tag::false"
+            echo "VALID_TAG=false" >> $GITHUB_ENV
           fi
 
       - name: Create Release
-        if: steps.check_tag.outputs.valid_tag == 'true'
+        if: env.VALID_TAG == 'true'
         id: create_release
         uses: actions/create-release@v1
         env:
