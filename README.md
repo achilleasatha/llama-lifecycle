@@ -1,5 +1,5 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/achilleasatha/llama_lifecycle/blob/main/LICENSE)
-[![GitHub tag](https://img.shields.io/github/tag/achilleasatha/llama_lifecycle.svg)](https://github.com/achilleasatha/llama-lifecycle/releases)
+[![GitHub tag](https://img.shields.io/github/tag/achilleasatha/llama-lifecycle.svg)](https://github.com/achilleasatha/llama-lifecycle/releases)
 ![GitHub Actions](https://github.com/achilleasatha/llama-lifecycle/actions/workflows/ci.yml/badge.svg)
 [![codecov](https://codecov.io/gh/achilleasatha/llama-lifecycle/graph/badge.svg?token=LIYRZKK6W3)](https://codecov.io/gh/achilleasatha/llama-lifecycle)
 
