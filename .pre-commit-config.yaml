@@ -28,6 +28,7 @@ repos:
         entry: flake8
         language: system
         stages: [commit, pre-push]
+        args: [ '--max-line-length=120' ]
 
   - repo: https://github.com/pre-commit/mirrors-pylint
     rev: v3.0.0a5
