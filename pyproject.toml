@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "llama-lifecycle"
-version = "0.1.0"
+version = "0.0.9a0"
 description = ""
 authors = ["Achilleas Athanasiou Fragkoulis <achilleasatha@gmail.com>"]
 readme = "README.md"
@@ -11,21 +11,39 @@ mkdocs = "^1.5.3"
 bumpver = "^2023.1129"
 pydantic = "^2.6.0"
 click = "^8.1.7"
-mypy = "^1.8.0"
-
+pyyaml = "^6.0.1"
+mypy = "^1.0"
+types-pyyaml = "^6.0.12.12"
+pylint = "^3.0.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
 pytest-cov = "^4.1.0"
 
+[tool.poetry.scripts]
+invoke_cli = "llama_lifecycle.cli.cli:invoke_cli"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[bumpver]
+[tool.bumpver]
 current_version = "0.0.9a0"
 version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 commit = true
+commit_message = "bump version {old_version} -> {new_version}"
 tag = true
 push = true
 bump_files = ["pyproject.toml"]
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    'current_version = "{version}"',
+    'version = "{pep440_version}"'
+]
+"llama_lifecycle/__init__.py" = [
+    '__version__ = "{pep440_version}"'
+]
+
+[tool.mypy]
+ignore_missing_imports = true
