@@ -21,7 +21,7 @@ pytest = "^8.0.0"
 pytest-cov = "^4.1.0"
 
 [tool.poetry.scripts]
-invoke_cli = "llama_lifecycle.cli.cli:invoke_cli"
+run_cli = "llama_lifecycle.cli.cli:run_cli"
 
 [build-system]
 requires = ["poetry-core"]

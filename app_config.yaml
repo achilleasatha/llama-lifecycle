@@ -1,0 +1,11 @@
+# app_config.yaml
+
+app:
+  app_name: "MyApp"
+  debug: true
+  log_level: "debug"
+
+db:
+  url: "sqlite:///database.db"
+  max_connections: 10
+  timeout: 60
