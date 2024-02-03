@@ -13,11 +13,11 @@ from llama_lifecycle.main import main
 @click.option("--app-name", default="MyApp", help="Name of the application")
 @click.option("--debug/--no-debug", default=False, help="Enable debug mode")
 @click.option("--log-level", default="info", help="Logging level")
-def run_cli(config_file, app_name, debug, log_level):  # pylint:disable=unused-argument
+def run_cli(config_file, app_name, debug, log_level):
     """Command-line interface for the application."""
     cli_args = {k: v for k, v in locals().items() if v is not None}
     config = load_config_from_yaml(config_file, cli_args)
-    click.echo(json.dumps(config.app.dict(), indent=2))  # pylint:disable=no-member
+    click.echo(json.dumps(config.app.dict(), indent=2))
 
     # Invoke the function from main.py
     main(config=config)
@@ -25,4 +25,4 @@ def run_cli(config_file, app_name, debug, log_level):  # pylint:disable=unused-a
 
 # This allows the module to be executed as a script
 if __name__ == "__main__":
-    run_cli()  # pylint:disable=no-value-for-parameter
+    run_cli()

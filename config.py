@@ -26,13 +26,13 @@ import yaml
 from pydantic import BaseModel, Field
 
 
-class AppConfig(BaseModel):  # pylint:disable=too-few-public-methods
+class AppConfig(BaseModel):
     app_name: str = Field(..., description="Name of the application")
     debug: bool = Field(False, description="Enable debug mode")
     log_level: str = Field("info", description="Logging level")
 
 
-class DatabaseConfig(BaseModel):  # pylint:disable=too-few-public-methods
+class DatabaseConfig(BaseModel):
     url: str = Field(..., description="Database connection URL")
     max_connections: Optional[int] = Field(
         None, description="Maximum number of database connections"
@@ -40,11 +40,11 @@ class DatabaseConfig(BaseModel):  # pylint:disable=too-few-public-methods
     timeout: int = Field(30, description="Database connection timeout (seconds)")
 
 
-class AppConfigSettings(BaseModel):  # pylint:disable=too-few-public-methods
+class AppConfigSettings(BaseModel):
     app: AppConfig = Field(..., description="Application settings")
     db: DatabaseConfig = Field(..., description="Database settings")
 
-    class Config:  # pylint:disable=too-few-public-methods
+    class Config:
         env_prefix = "APP_"  # Prefix for environment variables
         case_sensitive = False  # Case sensitivity for environment variables
 
