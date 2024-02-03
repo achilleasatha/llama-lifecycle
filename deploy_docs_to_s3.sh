@@ -6,9 +6,9 @@ cp README.md docs/README.md
 # Build the documentation using MkDocs
 mkdocs build
 
-# Read configuration from config.json
-S3_BUCKET_NAME=$(jq -r '.s3_bucket_name' config.json)
-AWS_REGION=$(jq -r '.aws_region' config.json)
+# Read configuration from aws_config.json
+S3_BUCKET_NAME=$(jq -r '.s3_bucket_name' aws_config.json)
+AWS_REGION=$(jq -r '.aws_region' aws_config.json)
 
 # Check if the S3 bucket exists
 if aws s3api head-bucket --bucket "$S3_BUCKET_NAME" 2>/dev/null; then
