@@ -14,7 +14,6 @@ click = "^8.1.7"
 pyyaml = "^6.0.1"
 mypy = "^1.0"
 types-pyyaml = "^6.0.12.12"
-pylint = "^3.0.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
@@ -47,3 +46,8 @@ bump_files = ["pyproject.toml"]
 
 [tool.mypy]
 ignore_missing_imports = true
+
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
