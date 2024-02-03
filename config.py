@@ -26,13 +26,13 @@ import yaml
 from pydantic import BaseModel, Field
 
 
-class AppConfig(BaseModel):  # pylint:disable=too-few-public-methods
+class AppConfig(BaseModel):
     app_name: str = Field(..., description="Name of the application")
     debug: bool = Field(False, description="Enable debug mode")
     log_level: str = Field("info", description="Logging level")
 
 
-class DatabaseConfig(BaseModel):  # pylint:disable=too-few-public-methods
+class DatabaseConfig(BaseModel):
     url: str = Field(..., description="Database connection URL")
     max_connections: Optional[int] = Field(
         None, description="Maximum number of database connections"
@@ -40,13 +40,23 @@ class DatabaseConfig(BaseModel):  # pylint:disable=too-few-public-methods
     timeout: int = Field(30, description="Database connection timeout (seconds)")
 
 
-class AppConfigSettings(BaseModel):  # pylint:disable=too-few-public-methods
-    app: AppConfig = Field(..., description="Application settings")
+class AppConfigSettings(BaseModel):
+    app: AppConfig = Field(AppConfig(), description="Application settings")
     db: DatabaseConfig = Field(..., description="Database settings")
 
-    class Config:  # pylint:disable=too-few-public-methods
+    class Config:
         env_prefix = "APP_"  # Prefix for environment variables
         case_sensitive = False  # Case sensitivity for environment variables
+
+
+# Subclass AppConfigSettings to update default values
+class CustomAppConfigSettings(
+    AppConfigSettings
+):
+    app: AppConfig = Field(
+        AppConfig(app_name="CustomApp", debug=True, log_level="debug"),
+        description="Custom application settings",
+    )
 
 
 # Load configuration data from a YAML file
@@ -70,8 +80,7 @@ def load_config_from_yaml(file_path: str, cli_args: dict) -> AppConfigSettings:
 
     # Merge configuration data with CLI arguments
     for key, value in cli_args.items():
-        if key in config_data["app"]:
-            config_data["app"][key] = value
-        if key in config_data["db"]:
-            config_data["db"][key] = value
+        if key.startswith("app_") and hasattr(AppConfig, key[len("app_") :]):
+            setattr(config_data["app"], key[len("app_") :], value)
+
     return AppConfigSettings(**config_data)
