@@ -11,3 +11,9 @@ site/
 # Coverage reports for tests
 .coverage
 coverage.xml
+
+# Local db files
+*.db
+
+# Model checkpoints
+/models/
