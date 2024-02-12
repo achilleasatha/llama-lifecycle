@@ -18,6 +18,18 @@ Make sure you have the following tools installed on your system:
 - [Python](https://www.python.org/) (version 3.12 or higher)
 - [Poetry](https://python-poetry.org/) (Python dependency management tool)
 - [Git](https://git-scm.com/) (Version control system)
+- [pre-commit](https://pre-commit.com/) (Git hook management tool)
+
+Ideally run a virtual environment specific to this project and install Poetry and pre-commit through
+**pipx**.
+
+```bash
+pipx install poetry
+```
+
+```bash
+pipx install pre-commit
+```
 
 ### Installation
 
@@ -43,9 +55,22 @@ This command will create a virtual environment and install the project dependenc
 ### Set up pre-commit Hooks:
 
 ```bash
-poetry run pre-commit install
+pre-commit install
 ```
 This command will set up pre-commit hooks defined in .pre-commit-config.yaml to run before each commit, ensuring code quality and consistency.
+
+### Setting Up Llama 2
+
+Request access from the official page [Llama Downloads](https://llama.meta.com/llama-downloads/).
+
+Once approved you should get a link in your email. You will need this to run the download script:
+```bash
+./llama_lifecycle/models.download.sh
+```
+
+Simply run the script, follow the instructions, paste the emailed linked when asked and select the model checkpoint(s)
+you'd like to download. In our example use case here are using ```llama-2-7b-chat```.
+
 
 ### Development
 You can now start developing your project. Here are some useful commands:
