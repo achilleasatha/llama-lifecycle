@@ -12,6 +12,10 @@ bumpver = "^2023.1129"
 pydantic = "^2.6.0"
 click = "^8.1.7"
 pyyaml = "^6.0.1"
+datasets = "^2.16.1"
+sentencepiece = "^0.1.99"
+torch = "^2.2.0"
+transformers = "^4.37.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
