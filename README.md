@@ -1,99 +1,35 @@
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/achilleasatha/llama_lifecycle/blob/main/LICENSE)
-[![GitHub tag](https://img.shields.io/github/tag/achilleasatha/llama-lifecycle.svg)](https://github.com/achilleasatha/llama-lifecycle/releases)
-![GitHub Actions](https://github.com/achilleasatha/llama-lifecycle/actions/workflows/ci.yml/badge.svg)
-[![codecov](https://codecov.io/gh/achilleasatha/llama-lifecycle/graph/badge.svg?token=LIYRZKK6W3)](https://codecov.io/gh/achilleasatha/llama-lifecycle)
+# Configuration Loader
 
-# Llama Lifecycle
+This code file provides an entry point module for an application that loads configuration settings from a YAML file using the `load_config_from_yaml` function from the `config` module.
 
-An example toy project on how to manage an LLM deployment lifecycle for a real-world application.
+## Main Function
 
-## Project Setup
+The `main` function of the application is responsible for loading the configuration settings and then using those settings in the application logic. If no configuration is provided as an argument to the function, it will load the configuration from the "app_config.yaml" file by default.
 
-To set up and develop this project locally, follow these steps:
+Within the `main` function:
+- The application name, debug mode, and log level are extracted from the configuration settings.
+- The application name is printed.
+- The debug mode is printed as either "Enabled" or "Disabled" depending on the setting.
+- The log level is printed.
 
-### Prerequisites
+## How to Use
 
-Make sure you have the following tools installed on your system:
+To use this code file, you can simply run it as the main module by executing the script. The configuration settings will be loaded from the specified YAML file, or the default file if none is provided.
 
-- [Python](https://www.python.org/) (version 3.12 or higher)
-- [Poetry](https://python-poetry.org/) (Python dependency management tool)
-- [Git](https://git-scm.com/) (Version control system)
-- [pre-commit](https://pre-commit.com/) (Git hook management tool)
+## License Information
 
-Ideally run a virtual environment specific to this project and install Poetry and pre-commit through
-**pipx**.
+This project is licensed under the MIT License. For more details, please refer to the [LICENSE](https://github.com/achilleasatha/llama_lifecycle/blob/main/LICENSE) file.
 
-```bash
-pipx install poetry
-```
+## Version Information
 
-```bash
-pipx install pre-commit
-```
+You can find the version information for this project tagged on GitHub. For more details, refer to the [GitHub Releases](https://github.com/achilleasatha/llama-lifecycle/releases) page.
 
-### Installation
+## Continuous Integration
 
-1. **Clone the Repository:**
+This project utilizes GitHub Actions for continuous integration. You can check the status of the workflows in the [GitHub Actions](https://github.com/achilleasatha/llama-lifecycle/actions/workflows/ci.yml) page.
 
-   ```bash
-   git clone https://github.com/your_username/your_project.git
-    ```
+## Code Coverage
 
-2. **Navigate to the Project Directory:**
+Code coverage information for this project is available through Codecov. You can view the code coverage report [here](https://codecov.io/gh/achilleasatha/llama-lifecycle).
 
-    ```bash
-    cd your_project
-    ```
-
-3. **Install Dependencies with Poetry:**
-
-    ```bash
-    poetry install
-    ```
-This command will create a virtual environment and install the project dependencies specified in pyproject.toml.
-
-### Set up pre-commit Hooks:
-
-```bash
-pre-commit install
-```
-This command will set up pre-commit hooks defined in .pre-commit-config.yaml to run before each commit, ensuring code quality and consistency.
-
-### Setting Up Llama 2
-
-Request access from the official page [Llama Downloads](https://llama.meta.com/llama-downloads/).
-
-Once approved you should get a link in your email. You will need this to run the download script:
-```bash
-./llama_lifecycle/models.download.sh
-```
-
-Simply run the script, follow the instructions, paste the emailed linked when asked and select the model checkpoint(s)
-you'd like to download. In our example use case here are using ```llama-2-7b-chat```.
-
-
-### Development
-You can now start developing your project. Here are some useful commands:
-
-**Run Tests:**
-
-```bash
-poetry run pytest
-```
-
-**Run pre-commit Hooks (Manually):**
-```bash
-poetry run pre-commit run --all-files
-```
-
-**Lint and Format Code:**
-```bash
-poetry run black .
-poetry run isort .
-```
-
-### Contributing
-If you'd like to contribute to this project, please follow the Contributing Guidelines.
-
-### Support
-If you encounter any issues or have questions about this project, please open an issue on GitHub.
+Feel free to explore the project setup, development steps, and contribution guidelines provided in this README for more information on setting up and working with the project. If you encounter any issues or have questions, please open an issue on GitHub for support.
