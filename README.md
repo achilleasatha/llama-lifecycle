@@ -5,7 +5,23 @@
 
 # Llama Lifecycle
 
-An example toy project on how to manage an LLM deployment lifecycle for a real-world application.
+In this project I wanted to experiment with Fine-Tuning an off the shelf
+LLM.
+
+Model: `llama-2-7b-chat` \
+Dataset: `OpenAssistant - oasst1`
+
+See the project setup section for getting everything up and running.
+
+The general gist of this is:
+- Fetch our fine-tuning dataset
+- Fetch our pre-trained model
+- Preprocess our data to wrangle it in an appropriate format for training
+- Configure parameters for quantization as we are limited by hardware
+- Perform fine-tuning
+- Serve new model
+
+I played around with running this locally with an RTX3060 12GB.
 
 ## Project Setup
 
@@ -70,6 +86,17 @@ Once approved you should get a link in your email. You will need this to run the
 
 Simply run the script, follow the instructions, paste the emailed linked when asked and select the model checkpoint(s)
 you'd like to download. In our example use case here are using ```llama-2-7b-chat```.
+
+
+### Getting OASST1 Dataset
+Oasst1 can be fetched from [HuggingFace](https://huggingface.co/datasets/OpenAssistant/oasst1).
+The easiest way is through the `datasets` library by running
+```bash
+from datasets import load_dataset
+load_dataset("OpenAssistant/oasst1")
+```
+An example of how we can ingest to a DB can be found in:
+[ingestion_pipeline.py](https://github.com/achilleasatha/llama-lifecycle/blob/main/llama_lifecycle/db/ingestion_pipeline.py)
 
 
 ### Development
