@@ -17,3 +17,6 @@ coverage.xml
 
 # Model checkpoints
 /models/
+
+# Datasets
+/datasets/
