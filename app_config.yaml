@@ -1,11 +1,21 @@
 # app_config.yaml
 
 app:
-  app_name: "MyApp"
-  debug: true
+  app_name: "Llama 2 Chatbot"
+  debug: false
   log_level: "debug"
 
 db:
   url: "sqlite:///database.db"
   max_connections: 10
   timeout: 60
+
+inference:
+  model_path: "./models/llama-2-7b-chat-sft/qlora_adapter"
+  tokenizer_path: "./models/llama-2-7b-chat-hf"
+  device_map: "cuda:0"
+  max_memory: "1200MB"
+
+api:
+  host: "localhost" #"0.0.0.0"
+  port: 8080
