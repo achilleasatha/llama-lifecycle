@@ -11,7 +11,7 @@ from transformers import (
 )
 from trl import SFTTrainer
 
-from datasets import load_dataset, load_from_disk
+from datasets import load_from_disk
 
 MODEL_PATH = "../../models/llama-2-7b-chat-hf/"
 
@@ -29,9 +29,6 @@ model = AutoModelForCausalLM.from_pretrained(
     device_map="cuda:0",
     max_memory="12000MB",
 )
-# Ensure we run on GPU
-# model = model.to("cuda")
-# model = model.to("cpu")
 
 # Load tokenizer and set new token to attend EOS tokens
 tokenizer = AutoTokenizer.from_pretrained(
@@ -39,12 +36,10 @@ tokenizer = AutoTokenizer.from_pretrained(
     trust_remote_code=False,
 )
 if tokenizer.pad_token is None:
-    # tokenizer.add_special_tokens({'pad_token': '<PAD>'})
     tokenizer.pad_token = tokenizer.eos_token
     model.resize_token_embeddings(len(tokenizer))
 
 # Load dataset
-# train_dataset = load_dataset("OpenAssistant/oasst1", split="train[:11]")
 train_dataset = load_from_disk("../../datasets/oasst1")
 train_dataset = train_dataset.map(
     lambda samples: tokenizer(
@@ -54,7 +49,6 @@ train_dataset = train_dataset.map(
     ),
     batched=True,
 )
-
 
 # Peft config
 lora_config = LoraConfig(
@@ -124,19 +118,8 @@ trainer = SFTTrainer(
     dataset_text_field="message_tree_text",
     tokenizer=tokenizer,
     max_seq_length=1024,
-    # formatting_func=formatting_func,
     callbacks=[PeftSavingCallback()],
-    # packing=True,
 )
 
 trainer.train()
-
 model.save_pretrained("../../models/llama-2-7b-chat-sft/qlora_adapter")
-
-
-# pipeline = transformers.pipeline(
-#     "text-generation",
-#     model=model,
-#     torch_dtype=torch.float16,
-#     device_map="auto",
-# )
