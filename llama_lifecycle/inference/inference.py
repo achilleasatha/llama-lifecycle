@@ -24,12 +24,10 @@ class LlamaChatbot:
             self.tokenizer.pad_token = self.tokenizer.eos_token
 
     def generate_response(self, prompt: str, max_length: int = 300):
-        def formatting_func(example):
-            text = f"\n ### USER: {example}"
-            return text
 
         inputs = self.tokenizer(
-            formatting_func(prompt), return_tensors="pt"
+            prompt,
+            return_tensors="pt",
         ).input_ids.to(self.device_map)
         generate_ids = self.model.generate(
             inputs=inputs,
