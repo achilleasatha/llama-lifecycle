@@ -22,6 +22,7 @@ bitsandbytes = "^0.42.0"
 accelerate = "^0.27.2"
 protobuf = "^4.25.3"
 setuptools = "^69.1.1"
+fastapi = "^0.110.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
