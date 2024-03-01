@@ -1,15 +1,33 @@
+import os
 import sqlite3
+from typing import Union
 
-from datasets import load_dataset
+from datasets import (
+    Dataset,
+    DatasetDict,
+    IterableDataset,
+    IterableDatasetDict,
+    load_dataset,
+)
 
 
-def ingest_data():
-    # Load dataset
+def fetch_dataset(
+    dataset_name: str | os.PathLike = "OpenAssistant/oasst1",
+) -> Union[DatasetDict, Dataset, IterableDatasetDict, IterableDataset]:
     # TODO separate script to download and save in an efficient format (parquet / avro) in S3 then import from there
-    datasets = load_dataset("OpenAssistant/oasst1")
+    datasets = load_dataset(dataset_name)
+    return datasets
+
+
+def ingest_data(
+    dataset_name: str | os.PathLike = "OpenAssistant/oasst1",
+    db_name: str | os.PathLike = "./oasst1.db",
+):
+
+    datasets = fetch_dataset(dataset_name=dataset_name)
 
     # Connect to SQLite database
-    conn = sqlite3.connect("./oasst1.db")
+    conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
 
     # Create table for combined data
@@ -59,7 +77,6 @@ def ingest_data():
             )
 
     conn.commit()
-    # Close database connection
     conn.close()
 
     print("Data successfully written to SQLite database.")
