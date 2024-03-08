@@ -40,9 +40,23 @@ class DatabaseConfig(BaseModel):
     timeout: int = Field(30, description="Database connection timeout (seconds)")
 
 
+class InferenceConfig(BaseModel):
+    model_path: str = Field(..., description="Path to the model")
+    tokenizer_path: str = Field(..., description="Path to the tokenizer")
+    device_map: Optional[str] = Field(None, description="Device mapping")
+    max_memory: Optional[str] = Field(None, description="Maximum memory")
+
+
+class ApiConfig(BaseModel):
+    host: str = Field(..., description="API host address")
+    port: int = Field(..., description="API port number")
+
+
 class AppConfigSettings(BaseModel):
     app: AppConfig = Field(..., description="Application settings")
     db: DatabaseConfig = Field(..., description="Database settings")
+    inference: InferenceConfig = Field(..., description="Inference settings")
+    api: ApiConfig = Field(..., description="API settings")
 
     class Config:
         env_prefix = "APP_"  # Prefix for environment variables
@@ -70,8 +84,8 @@ def load_config_from_yaml(file_path: str, cli_args: dict) -> AppConfigSettings:
 
     # Merge configuration data with CLI arguments
     for key, value in cli_args.items():
-        if key in config_data["app"]:
-            config_data["app"][key] = value
-        if key in config_data["db"]:
-            config_data["db"][key] = value
+        for subkey in ["app", "db", "inference", "api"]:
+            if key in config_data.get(subkey, {}):
+                config_data[subkey][key] = value
+
     return AppConfigSettings(**config_data)
